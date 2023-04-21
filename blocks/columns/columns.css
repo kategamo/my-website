@@ -1,3 +1,7 @@
+.columns {
+  background-color:cadetblue;
+}
+
 .columns > div {
   display: flex;
   flex-direction: column;
