@@ -51,9 +51,8 @@ function buildAutoBlocks(main) {
 function addTrackAttributesToImages(main) {
   const pictures = main.querySelectorAll('picture');
   pictures?.forEach((picture) => {
-    const images = picture.querySelectorAll('img');
+    const images = picture?.querySelectorAll('img');
     images?.forEach((image) => {
-    const image = picture.querySelector('img');
     image.setAttribute(
         "data-aem-asset-id",
         "8f82d7c8-ac8b-44da-a6d6-c851bdbfae0c"
