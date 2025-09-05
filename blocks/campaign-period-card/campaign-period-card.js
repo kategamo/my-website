@@ -45,7 +45,7 @@ function formatJapaneseDate(dateStr) {
     const day = parts.find(p => p.type === 'day')?.value;
     const weekday = parts.find(p => p.type === 'weekday')?.value;
     
-    return `${year}年${month}${day}日（${weekday}）`;
+    return `${year}年${month}月${day}日（${weekday}）`;
   } catch (error) {
     console.warn('Date formatting error:', error);
     return dateStr.trim();
