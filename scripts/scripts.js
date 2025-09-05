@@ -1,16 +1,16 @@
 import {
-  sampleRUM,
   buildBlock,
-  loadHeader,
-  loadFooter,
+  decorateBlocks,
   decorateButtons,
   decorateIcons,
   decorateSections,
-  decorateBlocks,
   decorateTemplateAndTheme,
-  waitForLCP,
   loadBlocks,
   loadCSS,
+  loadFooter,
+  loadHeader,
+  sampleRUM,
+  waitForLCP,
 } from './lib-franklin.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
@@ -45,6 +45,26 @@ function buildAutoBlocks(main) {
 }
 
 /**
+ * Adds track attributes to images.
+ * @param {Element} main The main element
+ */
+function addTrackAttributesToImages(main) {
+  const images = main.querySelectorAll('img');
+  images?.forEach((image) => {
+    image.setAttribute(
+        "data-aem-asset-id",
+        "8f82d7c8-ac8b-44da-a6d6-c851bdbfae0c"
+    );
+    image.setAttribute('data-trackable', 'true');
+    if(image.parentElement?.tagName === 'A') {
+      image.parentElement.setAttribute(
+          "onclick",
+          "assetAnalytics.core.assetClicked(this)"
+      );
+    }
+  });
+}
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -56,6 +76,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  addTrackAttributesToImages(main);
 }
 
 /**
