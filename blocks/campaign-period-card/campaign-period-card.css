@@ -1,0 +1,243 @@
+/* Campaign Period Card Block Styles */
+
+.campaign-period-card {
+  /* CSS Custom Properties for easy customization */
+  --card-max-width: 400px;
+  --card-background: #ffffff;
+  --card-border: 1px solid #ededed;
+  --card-border-radius: 8px;
+  --card-padding: 24px;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --card-gap: 8px;
+  
+  /* Typography */
+  --label-color: #616161;
+  --label-font-size: 16px;
+  --label-font-weight: 400;
+  --label-line-height: 1.5;
+  
+  --dates-color: #212121;
+  --dates-font-size: 16px;
+  --dates-font-weight: 500;
+  --dates-line-height: 1.4;
+  
+  /* Hover states */
+  --card-hover-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --card-hover-border: 1px solid #d0d0d0;
+  --card-hover-transform: translateY(-2px);
+  
+  /* Transitions */
+  --transition-duration: 0.2s;
+  --transition-easing: ease-out;
+}
+
+/* Main container - handles centering and spacing */
+.campaign-period-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Inner container - handles card appearance */
+.campaign-period-card-container {
+  background: var(--card-background);
+  border: var(--card-border);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+  max-width: var(--card-max-width);
+  width: 100%;
+  transition: 
+    box-shadow var(--transition-duration) var(--transition-easing),
+    border-color var(--transition-duration) var(--transition-easing),
+    transform var(--transition-duration) var(--transition-easing);
+}
+
+/* Content wrapper - handles internal spacing */
+.campaign-period-card-content {
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--card-gap);
+}
+
+/* Label styling */
+.campaign-period-card-label {
+  color: var(--label-color);
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+  line-height: var(--label-line-height);
+  margin: 0;
+}
+
+.campaign-period-card-label span {
+  display: inline-block;
+}
+
+/* Dates styling */
+.campaign-period-card-dates {
+  color: var(--dates-color);
+  font-size: var(--dates-font-size);
+  font-weight: var(--dates-font-weight);
+  line-height: var(--dates-line-height);
+  margin: 0;
+}
+
+.campaign-period-card-dates time {
+  display: inline-block;
+  font-family: inherit;
+}
+
+/* Hover effects */
+.campaign-period-card:hover .campaign-period-card-container {
+  box-shadow: var(--card-hover-shadow);
+  border: var(--card-hover-border);
+  transform: var(--card-hover-transform);
+}
+
+/* Clickable state */
+.campaign-period-card[data-link] {
+  cursor: pointer;
+}
+
+.campaign-period-card[data-link]:hover .campaign-period-card-container {
+  box-shadow: var(--card-hover-shadow);
+  border: var(--card-hover-border);
+  transform: var(--card-hover-transform);
+}
+
+/* Focus state for accessibility */
+.campaign-period-card[data-link]:focus {
+  outline: 2px solid #2196f3;
+  outline-offset: 4px;
+}
+
+.campaign-period-card[data-link]:focus .campaign-period-card-container {
+  box-shadow: var(--card-hover-shadow);
+  border: 1px solid #2196f3;
+  transform: var(--card-hover-transform);
+}
+
+/* Active state */
+.campaign-period-card[data-link]:active .campaign-period-card-container {
+  transform: translateY(0);
+  box-shadow: var(--card-shadow);
+}
+
+/* Responsive Design */
+
+/* Tablet styles */
+@media (max-width: 768px) {
+  .campaign-period-card {
+    --card-max-width: 80%;
+    --card-padding: 20px;
+    padding: 12px;
+  }
+  
+  .campaign-period-card-label {
+    --label-font-size: 15px;
+  }
+  
+  .campaign-period-card-dates {
+    --dates-font-size: 15px;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+  .campaign-period-card {
+    --card-max-width: 100%;
+    --card-padding: 16px;
+    --card-border-radius: 6px;
+    padding: 8px;
+  }
+  
+  .campaign-period-card-content {
+    gap: 6px;
+  }
+  
+  .campaign-period-card-label {
+    --label-font-size: 14px;
+  }
+  
+  .campaign-period-card-dates {
+    --dates-font-size: 14px;
+    --dates-font-weight: 600;
+  }
+  
+  /* Reduce hover effects on mobile */
+  .campaign-period-card:hover .campaign-period-card-container,
+  .campaign-period-card[data-link]:hover .campaign-period-card-container {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .campaign-period-card {
+    --card-border: 2px solid #000000;
+    --label-color: #000000;
+    --dates-color: #000000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .campaign-period-card-container {
+    transition: none;
+  }
+  
+  .campaign-period-card:hover .campaign-period-card-container,
+  .campaign-period-card[data-link]:hover .campaign-period-card-container {
+    transform: none;
+  }
+}
+
+/* Dark mode support (if implemented) */
+@media (prefers-color-scheme: dark) {
+  .campaign-period-card {
+    --card-background: #2a2a2a;
+    --card-border: 1px solid #404040;
+    --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --label-color: #cccccc;
+    --dates-color: #ffffff;
+    --card-hover-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --card-hover-border: 1px solid #606060;
+  }
+}
+
+/* Print styles */
+@media print {
+  .campaign-period-card {
+    --card-shadow: none;
+    --card-border: 1px solid #000000;
+    --card-background: transparent;
+  }
+  
+  .campaign-period-card-container {
+    break-inside: avoid;
+  }
+}
+
+/* RTL language support */
+[dir="rtl"] .campaign-period-card-content {
+  text-align: center; /* Keep centered for RTL */
+}
+
+/* Japanese font optimization */
+.campaign-period-card-label,
+.campaign-period-card-dates {
+  font-feature-settings: "palt" 1; /* Proportional alternate widths for Japanese */
+  text-rendering: optimizeLegibility;
+}
+
+/* Ensure proper line breaking for long Japanese text */
+.campaign-period-card-dates time {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  hyphens: none;
+}
