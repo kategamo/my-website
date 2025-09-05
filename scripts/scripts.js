@@ -49,15 +49,19 @@ function buildAutoBlocks(main) {
  * @param {Element} main The main element
  */
 function addTrackAttributesToImages(main) {
-  const images = main.querySelectorAll('img');
-  images?.forEach((image) => {
+  const pictures = main.querySelectorAll('picture');
+  pictures?.forEach((picture) => {
+    const images = picture.querySelectorAll('img');
+    images?.forEach((image) => {
+    const image = picture.querySelector('img');
     image.setAttribute(
         "data-aem-asset-id",
         "8f82d7c8-ac8b-44da-a6d6-c851bdbfae0c"
     );
-    image.setAttribute('data-trackable', 'true');
-    if(image.parentElement?.tagName === 'A') {
-      image.parentElement.setAttribute(
+      image.setAttribute('data-trackable', 'true');
+    });
+    if(picture.parentElement?.tagName === 'A') {
+      picture.parentElement.setAttribute(
           "onclick",
           "assetAnalytics.core.assetClicked(this)"
       );
